@@ -11,6 +11,7 @@ var autoprefixer = require('gulp-autoprefixer'),
   jsdev:   [
     './dev/js/src/marks.js',
     './dev/js/src/board.js',
+    './dev/js/src/board-view.js',
     './dev/js/plugins.js',
     './dev/js/main.js'
   ],
@@ -21,7 +22,7 @@ gulp.task('sass', function() {
   return gulp
     .src(paths.cssdev)
     .pipe(sourcemaps.init())
-    .pipe(sass({outputStyle: 'compressed'})
+    .pipe(sass({outputStyle: 'compressed'}))
     .pipe(autoprefixer())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(paths.cssdist));
