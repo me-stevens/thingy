@@ -1,0 +1,32 @@
+.container {
+  max-width: $content-width;
+  margin: auto;
+  padding: 0 1em;
+}
+
+.ttt {
+  padding: $spacing-unit 0;
+  text-align: center;
+
+  svg {
+    cursor: pointer;
+    display: inline-block;
+    max-width: 26%;
+    margin: 2%;
+    border-radius: 50%;
+    background-color: $cell-color;
+    transition: background-color .4s;
+
+    &:hover {
+      background-color: #64767E;
+    }
+  }
+}
+
+#X path {
+  fill: $link-color;
+}
+
+#O circle {
+  stroke: $success-color;
+}
