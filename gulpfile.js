@@ -11,6 +11,7 @@ var autoprefixer = require('gulp-autoprefixer'),
   jsdev:   [
     './dev/js/src/marks.js',
     './dev/js/src/board.js',
+    './dev/js/src/board-view.js',
     './dev/js/plugins.js',
     './dev/js/main.js'
   ],
