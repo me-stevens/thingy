@@ -1,27 +1,55 @@
-function BoardView() {
-}
+var BoardView = {
+  boardId: 'board',
+  svgNS:   'http://www.w3.org/2000/svg',
+  linkNS:  'http://www.w3.org/1999/xlink'
+};
 
-(function() {
-  this.update = function(index, mark) {
-    var cell = document.querySelector('[data-index="' + index + '"]');
-    cell.innerHTML = '<use xlink:href="#' + mark + '"></use>';
-  };
+BoardView.update = function(cellId, mark) {
+  var
+    svg = document.getElementById(cellId),
+    use = svg.getElementsByTagNameNS(BoardView.svgNS, 'use')[0];
+  use.setAttributeNS(BoardView.linkNS, 'xlink:href', '#' + mark);
+};
 
-  this.listenForClicks = function() {
-    var board = document.querySelector('[data-id="board"]');
-    board.addEventListener("click", this.placeMark, false);
-  };
+BoardView.setup = function(firstMark) {
 
-  this.placeMark = function(e) {
-    if (aCellWasClicked(e)) {
-      e.target.setAttribute("data-clicked", "true");
-      e.target.innerHTML = '<use xlink:href="#O"></use>';
-    };
-    e.stopPropagation();
-  };
+  var mark;
+
+  function resetMark() {
+    mark = firstMark;
+  }
 
   function aCellWasClicked(e) {
-    return e.target !== e.currentTarget && e.target.getAttribute("data-clicked") === "false";
-  };
+    return e.target !== e.currentTarget &&
+           e.target.getAttribute('style') === 'false';
+  }
 
-}).call(BoardView.prototype);
+  function markCellAsClicked(e) {
+    e.target.setAttribute('style', 'true');
+  }
+
+  function updateCellContents(e) {
+    BoardView.update(e.target.getAttribute('id'), mark);
+  }
+
+  function swapMarks() {
+    mark = (mark === marks.X) ? marks.O : marks.X;
+  }
+
+  function placeMark(e) {
+    if (aCellWasClicked(e)) {
+      markCellAsClicked(e);
+      updateCellContents(e);
+      swapMarks();
+    }
+    e.stopPropagation();
+  }
+
+  function listenForClicks() {
+    var board = document.getElementById(BoardView.boardId);
+    board.addEventListener('click', placeMark, false);
+  }
+
+  resetMark();
+  listenForClicks();
+};

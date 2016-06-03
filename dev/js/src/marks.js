@@ -1,6 +1,5 @@
 var marks = {
-  E: "E",
-  X: "X",
-  O: "O"
+  E: 'E',
+  X: 'X',
+  O: 'O'
 };
-
