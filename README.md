@@ -1,4 +1,7 @@
-# JS Tic-Tac-Toe
+![Screenshot](jsSVGttt.png)
+
+
+# JavaScript and SVG Tic-Tac-Toe
 
 A web-based Tic-Tac-Toe entirely made with SVG and JavaScript.
 
