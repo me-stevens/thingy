@@ -1,6 +1,16 @@
 # JS Tic-Tac-Toe
 
-A web-based Tic-Tac-Toe entirely made with JavaScript.
+A web-based Tic-Tac-Toe entirely made with SVG and JavaScript.
+
+It uses **SVG sprites** for the marks, and manipulates the SVG DOM through JavaScript methods from the SVG namespace. These methods and the document specs change slightly from HTML, so for example, to access an element inside the SVG with JavaScript, one must provide the right namespace:
+
+```javascript
+// Uses the SVG namespace:
+svg.getElementsByTagNameNS('http://www.w3.org/2000/svg', 'use')[0];
+// Uses the xlink namespace:
+use.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#' + mark);
+```
+
 
 ## About
 

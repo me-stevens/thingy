@@ -59,7 +59,7 @@ function Board(rows) {
     return rows[0].map(function(column, i) {
       return rows.map(function(row) {
         return row[i];
-      })
+      });
     });
   };
 
